@@ -25,7 +25,7 @@ git commit -m "docs: adicionar README.md com informações do projeto"
 
 # Commit 7: Aplicação
 git add .
-git commit -m "feat: INclusão de todos os arquivos (HTML+CSS+JAVA Script)"
+git commit -m "feat: Inclusão de todos os arquivos (HTML+CSS+JAVA Script)"
 
 # Commit 8: Testes
 git add tests/
