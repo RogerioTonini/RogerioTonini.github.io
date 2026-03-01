@@ -1,0 +1,203 @@
+{
+    // EDITOR - Aparência e Comportamento
+    "editor.fontSize": 12,
+    "editor.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": true,
+    //  ARQUIVOS - Salvamento e Codificação
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 60000,
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    // AÇÕES AUTOMÁTICAS AO SALVAR
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    // EXPLORER - Organização Visual
+    "files.exclude": {
+        "**/.git": false,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/.vscode": false,
+        "**/node_modules": true,
+        "**/.cache": true,
+        "**/dist": false,
+        "**/.parcel-cache": true
+    },
+    "explorer.sortOrder": "type",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.html": "${capture}.css, ${capture}.js",
+        "*.css": "${capture}.min.css, ${capture}.map",
+        "*.js": "${capture}.min.js, ${capture}.map"
+    },
+    // HTML - Configurações
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.suggest.insertMode": "replace"
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "vue-html": "html"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.showExpandedAbbreviation": "always",
+    "html.format.wrapAttributes": "auto",
+    "html.format.wrapLineLength": 120,
+    "html.autoClosingTags": true,
+    "html.validate.scripts": true,
+    "html.validate.styles": true,
+    // CSS - Configurações
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.suggest.insertMode": "replace"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "css.validate": true,
+    "css.hover.documentation": true,
+    "css.completion.triggerPropertyValueCompletion": true,
+    "stylelint.enable": true,
+    "stylelint.validate": [
+        "css",
+        "scss",
+        "sass"
+    ],
+    // JAVASCRIPT - Configurações
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4
+    },
+    "javascript.validate.enable": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.suggestionActions.enabled": true,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "javascript.inlayHints.parameterNames.enabled": "all",
+    "eslint.enable": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html"
+    ],
+    "eslint.workingDirectories": [
+        {
+            "mode": "auto"
+        }
+    ],
+    // BASH - Configurações
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4
+    },
+    "shellcheck.enable": true,
+    "shellcheck.executablePath": "shellcheck",
+    "shellcheck.run": "onType",
+    "shellcheck.exclude": [
+        "SC2154"
+    ],
+    "shellformat.flag": "-i 4 -ci",
+    // TERMINAL - Configuração
+    "terminal.integrated.profiles.windows": {
+        "Git Bash": {
+            "path": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
+            "icon": "terminal-bash",
+            "args": [
+                "-l"
+            ]
+        },
+        "PowerShell": {
+            "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontFamily": "JetBrains Mono, Consolas, monospace",
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "terminal.integrated.scrollback": 100,
+    // 🎨 PRETTIER - Formatação Universal
+    "prettier.semi": true,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "es5",
+    "prettier.tabWidth": 2,
+    "prettier.printWidth": 100,
+    "prettier.arrowParens": "avoid",
+    "prettier.endOfLine": "lf",
+    // BUSCA - Configuração
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/.cache": true,
+        "**/.git": true,
+        "**/*.min.js": true,
+        "**/*.min.css": true
+    },
+    "search.useIgnoreFiles": true,
+    // JANELA - Comportamento
+    "window.restoreWindows": "all",
+    "workbench.startupEditor": "welcomePageInEmptyWorkbench",
+    "window.title": "${activeEditorShort}${separator}${rootName}",
+    // GIT - Controle de Versão
+    "git.autofetch": true,
+    "git.autofetchPeriod": 60,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.ignoreLimitWarning": true,
+    // LIVE SERVER - Servidor de desenvolvimento
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.root": "/",
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.host": "localhost",
+    "liveServer.settings.useWebExt": false,
+    "liveServer.settings.wait": 500,
+    // INTERFACE - Tema e Ícones
+    "workbench.iconTheme": "vscode-icons",
+    // SPELL CHECKER - Verificação Ortográfica
+    "cSpell.language": "en,pt-BR",
+    "cSpell.enableFiletypes": [
+        "html",
+        "css",
+        "javascript",
+        "markdown",
+        "shellscript"
+    ],
+    "cSpell.words": [
+        "flexbox",
+        "tbody",
+        "thead",
+        "onclick",
+        "classList",
+        "querySelector",
+        "getElementsBy"
+    ],
+    // PATH INTELLISENSE - Autocomplete de caminhos
+    "path-intellisense.mappings": {
+        "/": "${workspaceFolder}",
+        "@": "${workspaceFolder}/app"
+    }
+}
