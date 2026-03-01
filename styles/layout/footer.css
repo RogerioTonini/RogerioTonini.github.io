@@ -1,0 +1,36 @@
+/*
+ * ============================================================
+ * styles/layout/_footer.css
+ * Rodapé do site.
+ * ============================================================
+ */
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: 40px;
+  text-align: center;
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.footer__copy {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.footer__source {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.footer__source-link {
+  color: var(--color-text-dim);
+  transition: color var(--duration-fast);
+  cursor: none;
+}
+
+.footer__source-link:hover {
+  color: var(--color-accent);
+}

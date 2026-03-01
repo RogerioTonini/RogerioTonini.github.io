@@ -1,0 +1,220 @@
+/*
+ * ============================================================
+ * styles/layout/_navbar.css
+ * Barra de navegação — fixa no topo, responsiva.
+ *
+ * ESTRUTURA HTML esperada:
+ * <nav class="navbar">
+ *   <div class="nav__inner">
+ *     <a class="nav__logo">...</a>
+ *     <ul class="nav__links">...</ul>
+ *     <a class="nav__cta">...</a>
+ *     <button class="nav__toggle">...</button>
+ *   </div>
+ *   <div class="nav__mobile">...</div>
+ * </nav>
+ * ============================================================
+ */
+
+/* ----------------------------------------------------------
+   BLOCO: navbar
+---------------------------------------------------------- */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-navbar);
+  padding-block: 20px;
+  transition:
+    background     var(--duration-base) var(--ease),
+    backdrop-filter var(--duration-base) var(--ease),
+    padding        var(--duration-base) var(--ease);
+}
+
+/* Modificador: com scroll — fundo escuro + blur */
+.navbar--scrolled {
+  background: rgba(10, 12, 15, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding-block: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: nav__inner (container interno)
+---------------------------------------------------------- */
+
+.nav__inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: nav__logo
+---------------------------------------------------------- */
+
+.nav__logo {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color var(--duration-fast);
+  cursor: none;
+  white-space: nowrap;
+}
+
+.nav__logo:hover {
+  color: var(--color-accent);
+}
+
+/* Subelementos do logo */
+.nav__logo-bracket { color: var(--color-accent); }
+.nav__logo-initials { color: var(--color-text); }
+
+/* ----------------------------------------------------------
+   ELEMENTO: nav__links (lista desktop)
+---------------------------------------------------------- */
+
+.nav__links {
+  display: flex;
+  gap: 8px;
+  margin-inline: auto;   /* centraliza entre logo e CTA */
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: nav__link (item individual)
+---------------------------------------------------------- */
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+  transition:
+    color      var(--duration-fast),
+    background var(--duration-fast);
+  cursor: none;
+}
+
+.nav__link:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: nav__cta (botão download currículo)
+---------------------------------------------------------- */
+
+.nav__cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-accent);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition:
+    background  var(--duration-fast),
+    box-shadow  var(--duration-fast);
+  cursor: none;
+}
+
+.nav__cta:hover {
+  background: var(--color-accent-dim);
+  box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: nav__toggle (hamburguer — mobile)
+---------------------------------------------------------- */
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  cursor: none;
+}
+
+.nav__toggle-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: nav__mobile (menu dropdown — mobile)
+---------------------------------------------------------- */
+
+.nav__mobile {
+  display: none;
+  flex-direction: column;
+  background: rgba(10, 12, 15, 0.97);
+  border-top: 1px solid var(--color-border);
+  padding: 24px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition:
+    opacity   0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+
+/* Modificador: aberto */
+.nav__mobile--open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: nav__link-mobile
+---------------------------------------------------------- */
+
+.nav__link-mobile {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--duration-fast);
+  cursor: none;
+}
+
+.nav__link-mobile:hover {
+  color: var(--color-accent);
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVIDADE
+---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  /* Esconde links e CTA desktop */
+  .nav__links { display: none; }
+  .nav__cta   { display: none; }
+
+  /* Mostra hamburguer e menu mobile */
+  .nav__toggle { display: flex; }
+  .nav__mobile { display: flex; }
+}

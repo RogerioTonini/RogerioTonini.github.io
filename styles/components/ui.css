@@ -1,0 +1,87 @@
+/*
+ * ============================================================
+ * styles/components/_ui.css
+ * Componentes de UI genéricos reutilizáveis:
+ * - Back to Top button
+ * - Grain canvas overlay
+ * ============================================================
+ */
+
+/* ----------------------------------------------------------
+   BACK TO TOP
+   Botão flutuante no canto inferior direito.
+   Fica oculto; aparece quando o usuário rola > 300px (via JS).
+---------------------------------------------------------- */
+
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  z-index: 500;
+  cursor: none;
+
+  /* Estado inicial: invisível e levemente abaixo */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+
+  transition:
+    opacity      var(--duration-base),
+    transform    var(--duration-base),
+    color        var(--duration-fast),
+    border-color var(--duration-fast);
+}
+
+.back-to-top svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Modificador: visível (adicionado via JS) */
+.back-to-top--visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* ----------------------------------------------------------
+   GRAIN CANVAS
+   Canvas fixo gerado via JS com textura de ruído.
+   Fica sobre o fundo para dar profundidade visual.
+---------------------------------------------------------- */
+
+#grainCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: var(--z-canvas);
+  opacity: 0.025;
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVIDADE
+---------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+  }
+}

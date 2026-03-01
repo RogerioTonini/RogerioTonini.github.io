@@ -1,0 +1,111 @@
+/*
+ * ============================================================
+ * styles/base/_animations.css
+ * Keyframes globais e classes utilitárias de animação.
+ *
+ * CONVENÇÃO DE NOMENCLATURA:
+ * @keyframes usam camelCase: fadeSlideUp, spinSlow, etc.
+ * Classes utilitárias usam prefixo .anim-
+ * ============================================================
+ */
+
+/* ----------------------------------------------------------
+   KEYFRAMES
+---------------------------------------------------------- */
+
+/* Entrada vindo de cima */
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Entrada vindo de baixo */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Cursor piscando (typewriter) */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Pulso de brilho (badge, dots de status) */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--color-accent-glow); }
+  50%       { box-shadow: 0 0 0 6px transparent; }
+}
+
+/* Rotação contínua (anel decorativo do avatar) */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Flutuação vertical (floating card) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Pulso da linha de scroll indicator */
+@keyframes scrollPulse {
+  0%   { opacity: 1; transform: scaleY(1);   transform-origin: top; }
+  100% { opacity: 0; transform: scaleY(0);   transform-origin: bottom; }
+}
+
+/* ----------------------------------------------------------
+   CLASSE REVEAL
+   Elementos com .reveal ficam invisíveis inicialmente.
+   Quando .visible é adicionada via JS (Intersection Observer),
+   a transição CSS é acionada automaticamente.
+---------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity   0.7s var(--ease),
+    transform 0.7s var(--ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----------------------------------------------------------
+   CLASSES UTILITÁRIAS DE ANIMAÇÃO
+   Podem ser aplicadas diretamente no HTML para animações simples.
+---------------------------------------------------------- */
+
+/* Entra de baixo com delay escalonado via CSS custom property */
+.anim-fade-up {
+  animation: fadeSlideUp var(--duration-slow, 0.9s) var(--delay, 0s) var(--ease) both;
+}
+
+/* Entra de cima */
+.anim-fade-down {
+  animation: fadeSlideDown 0.8s var(--ease) forwards;
+}
+
+/* Piscar (cursor typewriter) */
+.anim-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Pulso de status */
+.anim-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Rotação lenta */
+.anim-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Flutuação suave */
+.anim-float {
+  animation: float 4s ease-in-out infinite;
+}

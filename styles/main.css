@@ -1,0 +1,43 @@
+/*
+ * ============================================================
+ * styles/main.css
+ * Ponto de entrada — importa todos os arquivos CSS parciais.
+ *
+ * ORDEM DE IMPORTAÇÃO (importante!):
+ * 1. Base → variáveis, reset, tipografia, animações
+ * 2. Layout → grid, navbar, footer
+ * 3. Components → cada seção e componente de UI
+ *
+ * COMO ADICIONAR NOVOS ESTILOS:
+ * 1. Crie o arquivo em styles/components/_meu-componente.css
+ * 2. Adicione o @import aqui, na seção correspondente
+ * ============================================================
+ */
+
+/* ── 1. BASE ─────────────────────────────────────────────── */
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/typography.css';
+@import './base/animations.css';
+
+/* ── 2. LAYOUT ───────────────────────────────────────────── */
+@import './layout/grid.css';
+@import './layout/navbar.css';
+@import './layout/footer.css';
+
+/* ── 3. COMPONENTS ───────────────────────────────────────── */
+@import './components/cursor.css';
+@import './components/buttons.css';
+@import './components/hero.css';
+@import './components/sobre.css';
+@import './components/ferramentas.css';
+@import './components/projetos.css';
+@import './components/contato.css';
+@import './components/ui.css';
+
+/*
+ * PARA ESCALAR O PROJETO, adicione novos @import abaixo:
+ * Ex: @import './components/blog-cards.css';
+ *     @import './components/timeline.css';
+ *     @import './components/modal.css';
+ */

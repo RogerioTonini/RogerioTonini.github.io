@@ -1,0 +1,98 @@
+/*
+ * ============================================================
+ * styles/base/_reset.css
+ * Reset & Normalize — zeragem de estilos padrão do navegador.
+ *
+ * Baseado em: modern-css-reset + opiniões próprias do projeto.
+ * Deve ser carregado ANTES de qualquer outro CSS de componente.
+ * ============================================================
+ */
+
+/* Remove margin, padding e garante box-sizing consistente */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Comportamento de scroll suave global */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;                  /* base para unidades rem              */
+  -webkit-text-size-adjust: 100%;   /* evita zoom automático em iOS        */
+}
+
+/* Estilos base do body */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* cursor padrão oculto — substituído pelo cursor customizado em _cursor.css */
+  cursor: none;
+}
+
+/* Em dispositivos touch, restaura cursor padrão */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Imagens responsivas por padrão */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove decoração de links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Remove estilo de listas */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Botões herdam fonte e sem borda/fundo padrão */
+button {
+  border: none;
+  background: none;
+  cursor: none;       /* usa cursor customizado */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Inputs e textareas herdam fonte */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Evita quebra de palavras em títulos */
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Garante que elementos interativos sejam focáveis com teclado */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}

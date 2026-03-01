@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!--
+    index.html — Portfólio Profissional | Analista de Dados
+    ====
+    CSS  : styles/main.css (importa todos os parciais)
+    JS   : scripts/main.js (importa todos os módulos via ESM)
+    Fontes: Google Fonts (Syne + DM Mono + DM Sans)
+    Ícones: Devicons CDN
+  -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio profissional — Analista de Dados especializado em Python, Power BI, SQL e visualização de dados."
+    />
+    <meta name="author" content="Rogerio Tonini" />
+
+    <!-- Open Graph (preview ao compartilhar em redes sociais) -->
+    <meta property="og:title" content="Rogerio Tonini | Analista de Dados" />
+    <meta property="og:description" content="Transformando dados em decisões estratégicas." />
+    <meta property="og:type" content="website" />
+
+    <title>Rogerio Tonini</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Devicons: ícones SVG das tecnologias -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+
+    <!--  CSS principal (importa todos os parciais via @import) -->
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+
+  <body>
+    <!-- Cursor - Controlado via scripts/modules/cursor.js -->
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <!--  Grain CANVAS - Textura de ruído gerada via scripts/modules/grain.js -->
+    <canvas id="grainCanvas" aria-hidden="true"></canvas>
+
+    <!--  Navbar -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegação principal">
+      <div class="nav__inner">
+        <a href="#hero" class="nav__logo" aria-label="Voltar ao topo">
+          <span class="nav__logo-bracket">[</span>
+          <span class="nav__logo-initials">RT</span>
+          <span class="nav__logo-bracket">]</span>
+        </a>
+        <ul class="nav__links" role="list">
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#stacks" class="nav__link">Stack</a></li>
+          <li><a href="#projetos" class="nav__link">Projetos</a></li>
+          <li><a href="#contato" class="nav__link">Contato</a></li>
+        </ul>
+        <a
+          href="assets/docs/curriculo.pdf"
+          class="nav__cta"
+          download
+          aria-label="Baixar currículo em PDF"
+        >
+          <span>Currículo</span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+          </svg>
+        </a>
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="navMenu"
+        >
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+        </button>
+      </div>
+      <div class="nav__mobile" id="navMenu" role="dialog" aria-label="Menu mobile">
+        <ul role="list">
+          <li><a href="#sobre" class="nav__link-mobile">Sobre</a></li>
+          <li><a href="#stacks" class="nav__link-mobile">Stack</a></li>
+          <li><a href="#projetos" class="nav__link-mobile">Projetos</a></li>
+          <li><a href="#contato" class="nav__link-mobile">Contato</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!--  HERO  -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <h1 class="hero__title" id="heroTitle">
+        <span class="hero__greeting">Olá, sou</span>
+        <span class="hero__name">
+          <span class="hero__full-name">Rogerio Tonini</span>
+        </span>
+      </h1>
+      <p class="hero__role">
+        <span class="hero__role-prefix">~/</span>
+        <span id="typewriter" aria-live="polite"></span>
+        <span class="hero__cursor" aria-hidden="true">_</span>
+      </p>
+      <p class="hero__desc">
+        Transformo dados brutos em <strong>decisões estratégicas</strong>.<br />
+      </p>
+
+      <div class="hero__social" aria-label="Redes sociais">
+        <a
+          href="https://github.com/RogerioTonini"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero__social-link"
+          aria-label="GitHub"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 .3a12 12 0 00-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .31.21.69.82.57A12 12 0 0012 .3"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://linkedin.com/in/rogerio-tonini"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero__social-link"
+          aria-label="LinkedIn"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM6.91 20.45H3.76V9h3.15v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-label">scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+    <!--  Sobre  -->
+    <section class="sobre section" id="sobre" aria-labelledby="sobreTitle">
+      <div class="container">
+        <div class="grid-2">
+          <div class="sobre__texto reveal">
+            <span class="section-tag">// sobre mim</span>
+            <h2 class="section-title" id="sobreTitle">
+              Dados são minha linguagem<span class="accent">.</span>
+            </h2>
+            <p>
+              Analista de Dados com foco em transformar conjuntos complexos de informação em
+              insights acionáveis. Trabalho com o ciclo completo de dados: da extração e limpeza até
+              a visualização e entrega de dashboards estratégicos para tomada de decisão.
+            </p>
+          </div>
+
+          <div class="sobre__visual reveal">
+            <div class="avatar">
+              <img class="avatar__img" src="assets/images/foto.jpg" alt="Foto de Rogerio Tonini" />
+              <div class="avatar__ring" aria-hidden="true"></div>
+              <div class="avatar__corner avatar__corner--tl" aria-hidden="true"></div>
+              <div class="avatar__corner avatar__corner--br" aria-hidden="true"></div>
+            </div>
+
+            <div class="floating-card" aria-label="Localização e disponibilidade">
+              <div class="floating-card__dot" aria-hidden="true"></div>
+              <div>
+                <span class="floating-card__label">Localização</span>
+                <span class="floating-card__value">São Paulo 🇧🇷</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  Stacks  -->
+    <section class="stacks section" id="stacks" aria-labelledby="stacksTitle">
+      <div class="container">
+        <span class="section-tag reveal">// stacks</span>
+
+        <div class="tools-grid reveal" role="list" aria-label="Lista de stacks e tecnologias">
+          <div class="tool" role="listitem" aria-label="Python">
+            <div class="tool__icon">
+              <i class="devicon-python-plain colored" aria-hidden="true"></i>
+            </div>
+            <span class="tool__name">Python</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="Microsoft Excel">
+            <div class="tool__icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <rect width="48" height="48" rx="6" fill="#217346" />
+                <path d="M28 8h12a2 2 0 012 2v28a2 2 0 01-2 2H28V8z" fill="#185C37" />
+                <path d="M6 8h22v32H6a2 2 0 01-2-2V10a2 2 0 012-2z" fill="#21A366" />
+                <path d="M28 8h6v32h-6z" fill="#107C41" opacity=".5" />
+                <text
+                  x="9"
+                  y="32"
+                  font-family="Arial"
+                  font-weight="bold"
+                  font-size="16"
+                  fill="white"
+                >
+                  X
+                </text>
+                <line
+                  x1="28"
+                  y1="16"
+                  x2="42"
+                  y2="16"
+                  stroke="white"
+                  stroke-width="1"
+                  opacity=".3"
+                />
+                <line
+                  x1="28"
+                  y1="24"
+                  x2="42"
+                  y2="24"
+                  stroke="white"
+                  stroke-width="1"
+                  opacity=".3"
+                />
+                <line
+                  x1="28"
+                  y1="32"
+                  x2="42"
+                  y2="32"
+                  stroke="white"
+                  stroke-width="1"
+                  opacity=".3"
+                />
+                <!-- <line x1="35" y1="8" x2="35" y2="40" stroke="white" stroke-width="1" opacity=".3" /> -->
+              </svg>
+            </div>
+            <span class="tool__name">Excel</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="Power BI">
+            <div class="tool__icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <rect width="48" height="48" rx="6" fill="#F2C811" />
+                <rect x="8" y="28" width="6" height="12" rx="2" fill="#333" />
+                <rect x="17" y="20" width="6" height="20" rx="2" fill="#333" />
+                <rect x="26" y="14" width="6" height="26" rx="2" fill="#333" />
+                <rect x="35" y="8" width="6" height="32" rx="2" fill="#333" />
+              </svg>
+            </div>
+            <span class="tool__name">Power BI</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="MySQL">
+            <div class="tool__icon">
+              <i class="devicon-mysql-plain colored" aria-hidden="true"></i>
+            </div>
+            <span class="tool__name">MySQL</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="PostgreSQL">
+            <div class="tool__icon">
+              <i class="devicon-postgresql-plain colored" aria-hidden="true"></i>
+            </div>
+            <span class="tool__name">PostgreSQL</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="SQL Server">
+            <div class="tool__icon">
+              <i class="devicon-microsoftsqlserver-plain colored" aria-hidden="true"></i>
+            </div>
+            <span class="tool__name">SQL Server</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="HTML5">
+            <div class="tool__icon">
+              <i class="devicon-html5-plain colored" aria-hidden="true"></i>
+            </div>
+            <span class="tool__name">HTML5</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="CSS3">
+            <div class="tool__icon">
+              <i class="devicon-css3-plain colored" aria-hidden="true"></i>
+            </div>
+            <span class="tool__name">CSS3</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="Figma">
+            <div class="tool__icon">
+              <i class="devicon-figma-plain colored" aria-hidden="true"></i>
+            </div>
+            <span class="tool__name">Figma</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="Git">
+            <div class="tool__icon">
+              <i class="devicon-git-plain colored" aria-hidden="true"></i>
+            </div>
+            <span class="tool__name">Git</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="Bash">
+            <div class="tool__icon"><i class="devicon-bash-plain" aria-hidden="true"></i></div>
+            <span class="tool__name">Bash</span>
+          </div>
+
+          <div class="tool" role="listitem" aria-label="DAX Studio">
+            <div class="tool__icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <rect width="48" height="48" rx="6" fill="#1e3a5f" />
+                <text
+                  x="5"
+                  y="30"
+                  font-family="monospace"
+                  font-weight="bold"
+                  font-size="13"
+                  fill="#F2C811"
+                >
+                  DAX
+                </text>
+                <line x1="5" y1="34" x2="43" y2="34" stroke="#F2C811" stroke-width="2" />
+                <text x="10" y="43" font-family="monospace" font-size="8" fill="#8ab4d4">
+                  studio
+                </text>
+              </svg>
+            </div>
+            <span class="tool__name">DAX Studio</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="projetos section" id="projetos" aria-labelledby="projetosTitle">
+      <div class="container">
+        <span class="section-tag reveal">// projetos em destaque</span>
+
+        <div class="grid-auto">
+          <article class="project-card reveal" aria-label="Projeto: Dashboard de Vendas">
+            <div class="project-card__header">
+              <div class="project-card__icon">📊</div>
+              <div class="project-card__links">
+                <a
+                  href="https://github.com/RogerioTonini/projeto-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver código no GitHub"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M12 .3a12 12 0 00-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .31.21.69.82.57A12 12 0 0012 .3"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver demonstração"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-card__title">Dashboard de Vendas</h3>
+            <p class="project-card__desc">
+              Dashboard interativo desenvolvido no Power BI com integração a SQL Server. Análise de
+              performance de vendas com drill-down por região, produto e período.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">DAX</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" aria-label="Projeto: Pipeline de Dados com Python">
+            <div class="project-card__header">
+              <div class="project-card__icon">🐍</div>
+              <div class="project-card__links">
+                <a
+                  href="https://github.com/RogerioTonini/projeto-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver código no GitHub"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M12 .3a12 12 0 00-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .31.21.69.82.57A12 12 0 0012 .3"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-card__title">Pipeline de Dados com Python</h3>
+            <p class="project-card__desc">
+              Automação de ETL com Python e Pandas para consolidação de dados de múltiplas fontes,
+              com geração automática de relatórios em Excel e envio por e-mail.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">Python</span><span class="tag">Pandas</span>
+              <span class="tag">Excel</span><span class="tag">PostgreSQL</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" aria-label="Projeto: Análise Exploratória de Dados">
+            <div class="project-card__header">
+              <div class="project-card__icon">🔎</div>
+              <div class="project-card__links">
+                <a
+                  href="https://github.com/RogerioTonini/projeto-3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver código no GitHub"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M12 .3a12 12 0 00-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .31.21.69.82.57A12 12 0 0012 .3"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-card__title">Análise Exploratória de Dados</h3>
+            <p class="project-card__desc">
+              EDA completa com Python, Matplotlib e Seaborn sobre dataset público. Identificação de
+              padrões, outliers e correlações com visualizações interativas.
+            </p>
+            <div class="project-card__tags">
+              <span class="tag">Python</span><span class="tag">Matplotlib</span>
+              <span class="tag">Seaborn</span><span class="tag">MySQL</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="projetos__cta reveal">
+          <a
+            href="https://github.com/RogerioTonini"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--outline"
+          >
+            Ver todos os projetos no GitHub
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!--  Contato -->
+    <section class="contato section" id="contato" aria-labelledby="contatoTitle">
+      <div class="container">
+        <div class="grid-2">
+          <div class="contato__texto reveal">
+            <span class="section-tag">// contato</span>
+            <h2 class="section-title" id="contatoTitle">
+              Vamos conversar<span class="accent">?</span>
+            </h2>
+            <p>
+              Aberto a novas oportunidades, projetos freelance ou só uma boa conversa sobre dados.
+              Me manda uma mensagem!
+            </p>
+
+            <div class="contato__links">
+              <!--<a href="mailto:rogerio.tonini@gmail.com" class="contato__link">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span>rogerio.tonini@gmail.com</span>
+              </a> -->
+              <a
+                href="https://linkedin.com/in/rogerio-tonini"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contato__link"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM6.91 20.45H3.76V9h3.15v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+                  />
+                </svg>
+                <span>linkedin.com/in/rogerio-tonini</span>
+              </a>
+              <a
+                href="https://github.com/RogerioTonini"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contato__link"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M12 .3a12 12 0 00-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .31.21.69.82.57A12 12 0 0012 .3"
+                  />
+                </svg>
+                <span>github.com/RogerioTonini</span>
+              </a>
+            </div>
+          </div>
+          <form
+            class="contato__form reveal"
+            action="https://formspree.io/f/xpqjnoqa"
+            method="POST"
+            id="contactForm"
+            aria-label="Formulário de contato"
+            novalidate
+          >
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Rogerio Tonini"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu-email@dominio.com.br"
+                required
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                rows="5"
+                placeholder="Como posso te ajudar?"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full">
+              <span id="btnText">Enviar mensagem</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </button>
+
+            <p class="form-feedback" id="formFeedback" role="alert" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Botão voltar ao topo -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo da página">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path d="M18 15l-6-6-6 6" />
+      </svg>
+    </button>
+    <script type="module" src="scripts/main.js"></script>
+  </body>
+</html>

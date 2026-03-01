@@ -1,0 +1,94 @@
+/*
+ * ============================================================
+ * styles/components/_ferramentas.css
+ * Seção Ferramentas — grade de ícones de tecnologias.
+ * ============================================================
+ */
+
+.ferramentas {
+  padding-block: var(--section-gap);
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* ------ Grade de ferramentas ------ */
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* ------ Item individual ------ */
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  min-width: 140px;
+  cursor: default;
+  transition:
+    border-color var(--duration-fast),
+    background   var(--duration-fast),
+    transform    var(--duration-base) var(--ease-spring);
+}
+
+.tool:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-dim);
+  transform: translateY(-4px);
+}
+
+/* ------ Ícone ------ */
+.tool__icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Devicons via classe CSS */
+.tool__icon i {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* Bash: forçar cor branca */
+.devicon-bash-plain {
+  color: #ffffff !important;
+}
+
+/* SVGs customizados (Excel, Power BI, DAX Studio) */
+.tool__icon svg {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+}
+
+/* ------ Nome ------ */
+.tool__name {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  transition: color var(--duration-fast);
+}
+
+.tool:hover .tool__name {
+  color: var(--color-text);
+}
+
+/* ------ Responsividade ------ */
+@media (max-width: 600px) {
+  .tools-grid { gap: 12px; }
+
+  .tool {
+    min-width: calc(50% - 6px);
+    flex: 1 1 calc(50% - 6px);
+  }
+}

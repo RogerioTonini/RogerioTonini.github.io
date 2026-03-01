@@ -1,0 +1,100 @@
+/*
+ * ============================================================
+ * styles/layout/_grid.css
+ * Sistema de container e utilitários de layout (grid / flex).
+ * ============================================================
+ */
+
+/* ----------------------------------------------------------
+   CONTAINER CENTRALIZADO
+   Largura máxima definida por --container (em _variables.css).
+   Padding horizontal garante respiro nas bordas em mobile.
+---------------------------------------------------------- */
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;        /* equivalente a margin: 0 auto */
+  padding-inline: 24px;       /* equivalente a padding: 0 24px */
+}
+
+/* Container estreito — para blocos de texto em seções */
+.container--narrow {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* ----------------------------------------------------------
+   SEÇÃO BASE
+   Padding vertical padrão entre seções.
+   Usa --section-gap (definido em _variables.css).
+---------------------------------------------------------- */
+
+.section {
+  padding-block: var(--section-gap);   /* padding-top + padding-bottom */
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* ----------------------------------------------------------
+   UTILITÁRIOS DE GRID
+   Grids semânticos reutilizáveis, sem framework.
+---------------------------------------------------------- */
+
+/* Grid de 2 colunas iguais com gap padrão */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Grid auto-fill para cards — mínimo 300px por coluna */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* ----------------------------------------------------------
+   UTILITÁRIOS DE FLEX
+---------------------------------------------------------- */
+
+.flex        { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between{ display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap   { flex-wrap: wrap; }
+.gap-sm      { gap: 8px; }
+.gap-md      { gap: 16px; }
+.gap-lg      { gap: 24px; }
+
+/* ----------------------------------------------------------
+   RESPONSIVIDADE DO LAYOUT
+---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  :root {
+    --section-gap: 80px;
+  }
+
+  /* Grid de 2 colunas vira 1 coluna em tablet */
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* Grid auto vira 1 coluna em tablet */
+  .grid-auto {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --section-gap: 64px;
+  }
+
+  .container {
+    padding-inline: 20px;
+  }
+}

@@ -1,0 +1,84 @@
+/*
+ * ============================================================
+ * styles/base/_variables.css
+ * Design Tokens — todas as variáveis globais do projeto.
+ *
+ * COMO USAR:
+ * Para mudar a cor de destaque do site inteiro, altere --accent.
+ * Para mudar a tipografia global, altere as variáveis --font-*.
+ * Este arquivo é importado pelo styles/main.css e deve ser o
+ * PRIMEIRO a ser carregado.
+ * ============================================================
+ */
+
+:root {
+
+  /* ----------------------------------------------------------
+     PALETA DE CORES
+  ---------------------------------------------------------- */
+
+  /* Fundos */
+  --color-bg:        #0a0c0f;          /* fundo geral — quase preto        */
+  --color-bg-card:   #0f1318;          /* fundo de cards e painéis         */
+  --color-bg-input:  #161b22;          /* fundo de inputs e textareas      */
+
+  /* Bordas */
+  --color-border:       rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.20);
+
+  /* Texto */
+  --color-text:         #e8edf2;       /* texto principal                  */
+  --color-text-muted:   #6b7280;       /* texto secundário / subtítulos    */
+  --color-text-dim:     #374151;       /* texto muito apagado / placeholders */
+
+  /* Cor de destaque (accent) — ALTERE AQUI para mudar o tema inteiro */
+  --color-accent:       #22d3ee;                    /* ciano                */
+  --color-accent-dim:   rgba(34, 211, 238, 0.12);   /* fundo sutil accent   */
+  --color-accent-glow:  rgba(34, 211, 238, 0.35);   /* brilho / sombra      */
+
+  /* Cores de status */
+  --color-success: #22c55e;
+  --color-error:   #ef4444;
+
+  /* ----------------------------------------------------------
+     TIPOGRAFIA
+  ---------------------------------------------------------- */
+
+  --font-display: 'Syne', sans-serif;     /* títulos e hero                */
+  --font-body:    'DM Sans', sans-serif;  /* parágrafos e textos gerais    */
+  --font-mono:    'DM Mono', monospace;   /* código, tags, labels, nav     */
+
+  /* ----------------------------------------------------------
+     ESPAÇAMENTOS
+  ---------------------------------------------------------- */
+
+  --section-gap:  120px;   /* espaço vertical entre seções               */
+  --container:    1100px;  /* largura máxima do container centralizado    */
+
+  /* ----------------------------------------------------------
+     BORDAS ARREDONDADAS
+  ---------------------------------------------------------- */
+
+  --radius:    12px;  /* cards, avatares, painéis                         */
+  --radius-sm:  8px;  /* botões, inputs, badges                           */
+  --radius-pill: 100px; /* badges e pills totalmente arredondados          */
+
+  /* ----------------------------------------------------------
+     TRANSIÇÕES / EASINGS
+  ---------------------------------------------------------- */
+
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);        /* padrão suave     */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);   /* efeito mola      */
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   500ms;
+
+  /* ----------------------------------------------------------
+     Z-INDEX (camadas)
+  ---------------------------------------------------------- */
+
+  --z-canvas:   1;     /* grain canvas                                     */
+  --z-content:  2;     /* conteúdo das seções                              */
+  --z-navbar:   1000;  /* barra de navegação                               */
+  --z-cursor:   9999;  /* cursor personalizado                             */
+}

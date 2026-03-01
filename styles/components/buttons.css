@@ -1,0 +1,113 @@
+/*
+ * ============================================================
+ * styles/components/_buttons.css
+ * Todos os estilos de botões e links de ação do projeto.
+ *
+ * VARIANTES:
+ * .btn--primary  → fundo accent, texto escuro (CTA principal)
+ * .btn--ghost    → borda semitransparente (CTA secundário)
+ * .btn--outline  → borda sutil, usado para links "ver mais"
+ *
+ * MODIFICADORES:
+ * .btn--full     → largura 100% (formulários)
+ * ============================================================
+ */
+
+/* ----------------------------------------------------------
+   BASE: .btn
+   Todos os botões compartilham esta base.
+---------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: none;
+  white-space: nowrap;
+  transition:
+    transform    var(--duration-base) var(--ease-spring),
+    box-shadow   var(--duration-base),
+    color        var(--duration-fast),
+    background   var(--duration-fast),
+    border-color var(--duration-fast);
+}
+
+/* ----------------------------------------------------------
+   VARIANTE: Primário
+   Fundo sólido accent — para ações principais (CTAs).
+---------------------------------------------------------- */
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 500;
+  border-color: transparent;
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--color-accent-glow);
+}
+
+/* ----------------------------------------------------------
+   VARIANTE: Ghost
+   Borda visível, fundo transparente — para CTAs secundários.
+---------------------------------------------------------- */
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border-hover);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+}
+
+/* ----------------------------------------------------------
+   VARIANTE: Outline
+   Borda sutil — para links "ver todos" e ações terciárias.
+---------------------------------------------------------- */
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+  font-size: 0.88rem;
+  padding: 12px 24px;
+}
+
+.btn--outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ----------------------------------------------------------
+   MODIFICADOR: Full width
+   Ocupa 100% da largura do container pai (usado em formulários).
+---------------------------------------------------------- */
+
+.btn--full {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVIDADE
+---------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  /* Em mobile, CTAs hero ficam full width */
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

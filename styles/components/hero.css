@@ -1,0 +1,237 @@
+/*
+ * ============================================================
+ * styles/components/_hero.css
+ * Seção Hero — apresentação principal com nome e CTAs.
+ * ============================================================
+ */
+
+/* ----------------------------------------------------------
+   BLOCO: hero
+---------------------------------------------------------- */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 24px 80px;
+  max-width: var(--container);
+  margin-inline: auto;
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: hero__badge
+   Pill animado no topo ("Disponível para projetos")
+---------------------------------------------------------- */
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  margin-bottom: 32px;
+  width: fit-content;
+  animation: fadeSlideDown 0.8s var(--ease) forwards;
+}
+
+.hero__badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: hero__title
+   Nome principal com efeito de contorno na última palavra
+---------------------------------------------------------- */
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 24px;
+  animation: fadeSlideUp 0.9s 0.1s var(--ease) both;
+}
+
+.hero__greeting {
+  display: block;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.hero__name {
+  display: block;
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  line-height: 0.95;
+}
+
+/* Primeiro nome: cor sólida */
+.hero__name-first {
+  color: var(--color-text);
+}
+
+/* Último nome: efeito contorno (outline text) */
+.hero__name-last {
+  color: var(--color-accent);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--color-accent);
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: hero__role
+   Cargo com efeito typewriter
+---------------------------------------------------------- */
+
+.hero__role {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  animation: fadeSlideUp 0.9s 0.2s var(--ease) both;
+}
+
+.hero__role-prefix {
+  color: var(--color-accent);
+}
+
+/* Cursor piscando ao lado do typewriter */
+.hero__cursor {
+  animation: blink 1s step-end infinite;
+  color: var(--color-accent);
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: hero__desc
+   Parágrafo de descrição curta
+---------------------------------------------------------- */
+
+.hero__desc {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  animation: fadeSlideUp 0.9s 0.3s var(--ease) both;
+}
+
+.hero__desc strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: hero__actions
+   Grupo de botões CTA
+---------------------------------------------------------- */
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+  animation: fadeSlideUp 0.9s 0.4s var(--ease) both;
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: hero__social
+   Ícones de redes sociais
+---------------------------------------------------------- */
+
+.hero__social {
+  display: flex;
+  gap: 16px;
+  animation: fadeSlideUp 0.9s 0.5s var(--ease) both;
+}
+
+.hero__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  transition:
+    color        var(--duration-fast),
+    border-color var(--duration-fast),
+    background   var(--duration-fast),
+    transform    var(--duration-base) var(--ease-spring);
+  cursor: none;
+}
+
+.hero__social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hero__social-link:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: var(--color-accent-dim);
+  transform: translateY(-3px);
+}
+
+/* ----------------------------------------------------------
+   ELEMENTO: hero__scroll
+   Indicador visual de scroll no canto inferior direito
+---------------------------------------------------------- */
+
+.hero__scroll {
+  position: absolute;
+  bottom: 32px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  animation: fadeSlideUp 1s 0.8s var(--ease) both;
+}
+
+.hero__scroll-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-dim);
+  letter-spacing: 0.2em;
+  writing-mode: vertical-rl;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  animation: scrollPulse 2s infinite;
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVIDADE
+---------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 100px 20px 60px;
+  }
+
+  /* Remove efeito outline em telas pequenas (legibilidade) */
+  .hero__name-last {
+    -webkit-text-fill-color: var(--color-accent);
+    -webkit-text-stroke: 0;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+}
